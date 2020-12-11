@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authorization_navigation"
+    app:startDestination="@id/OAuthSignInFragment">
+
+    <fragment
+        android:id="@+id/OAuthSignInFragment"
+        android:name="com.example.future_authorization.OAuthSignInFragment"
+        android:label="o_auth_sign_in_fragment"
+        tools:layout="@layout/o_auth_sign_in_fragment" >
+        <action
+            android:id="@+id/action_OAuthSignInFragment_to_loginPasswordSignInFragment"
+            app:destination="@id/loginPasswordSignInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginPasswordSignInFragment"
+        android:name="com.example.future_authorization.LoginPasswordSignInFragment"
+        android:label="fragment_login_password_sign_in"
+        tools:layout="@layout/fragment_login_password_sign_in" />
+</navigation>

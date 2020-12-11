@@ -1,0 +1,27 @@
+<resources>
+    <string name="oauth_subtitle">Art you\'ll love from over 10,000 artist around the world</string>
+    <string name="oath_title">Buying art, made simple</string>
+    <string name="continue_with_arty">Continue with Arty</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="sign_in">Sign In</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_hint">Your Email</string>
+    <string name="password">Password</string>
+    <string name="oauth_callback_host">com.example.future_authorization</string>
+    <string name="artsy_scheme_callback">https</string>
+    <string name="empty_field_error_msg">Empty email field</string>
+    <string name="bad_email_address_error_msg">Incorrect email address</string>
+    <string name="empty_password_error_msg">Empty password field</string>
+    <string name="password_lenght_error_msg">Password can not be less than 6 characters</string>
+    <string name="loading">Loading...</string>
+    <string name="authorization_error">Authorization Error</string>
+    <string name="ok">OK</string>
+    <string name="unknown_error">Unknown Error please try again</string>
+
+    <string name="facebook_app_id">501899067433653</string>
+    <string name="fb_login_protocol_scheme">fb501899067433653</string>
+    <string name="app_name">ArtApp</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="cancel_auth_msg">Authorization Canceled</string>
+</resources>

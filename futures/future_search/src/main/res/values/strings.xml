@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="category">Category</string>
+    <string name="all">All</string>
+    <string name="artist">Artist</string>
+    <string name="artwork">Artwork</string>
+    <string name="profile">Profile</string>
+    <string name="gene">Gene</string>
+    <string name="show">Show</string>
+    <string name="apply_and_search">Apply and Search</string>
+    <string name="search_title">Search</string>
+</resources>

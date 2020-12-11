@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/search_result_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.SearchItemCorner"
+            android:scaleType="centerCrop"
+            tools:background="@color/red_1"/>
+        <TextView
+            android:id="@+id/search_result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Cool Title"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="@style/MediumText"
+            android:layout_toEndOf="@id/search_result_img"
+            android:layout_marginStart="8dp"/>
+        <TextView
+            android:id="@+id/search_result_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_result_title"
+            android:layout_alignStart="@id/search_result_title"
+            tools:text="Artwork"/>
+
+        <TextView
+            android:id="@+id/search_result_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@tools:sample/lorem/random"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/SmallText2"
+            android:layout_toEndOf="@id/search_result_img"
+            android:layout_below="@id/search_result_type"
+            android:layout_alignStart="@id/search_result_title"/>
+    </RelativeLayout>
+</layout>

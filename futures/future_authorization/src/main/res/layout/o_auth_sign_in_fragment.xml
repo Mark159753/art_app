@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    tools:context=".OAuthSignInFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/auth_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:src="@drawable/log_in_bg"
+        android:scaleType="centerCrop"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/auth_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/BigText2"
+        android:fontFamily="@font/google_sans_bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/auth_bg"
+        app:layout_constraintVertical_bias="0.97"
+        android:text="@string/oath_title"/>
+
+    <TextView
+        android:id="@+id/auth_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/auth_header"
+        android:textAppearance="@style/MediumText"
+        android:paddingHorizontal="40dp"
+        android:gravity="center"
+        android:fontFamily="@font/google_sans_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/oauth_subtitle"/>
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/oauth_artsy_sing_in_btn"
+        android:layout_marginTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/sign_btn_height"
+        android:text="@string/continue_with_arty"
+        style="@style/OAuthBtn"
+        app:icon="@drawable/ic_artsy_icon"
+        android:fontFamily="@font/google_sans_regular"
+        android:textAppearance="@style/MediumText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        app:layout_constraintTop_toBottomOf="@id/auth_subtitle"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/oauth_facebook_sing_in_btn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/sign_btn_height"
+        android:textAppearance="@style/MediumText"
+        android:fontFamily="@font/google_sans_regular"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/OAuthBtn"
+        app:icon="@drawable/ic_facebook_icon"
+        android:text="@string/continue_with_facebook"
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        app:layout_constraintTop_toBottomOf="@id/oauth_artsy_sing_in_btn"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/oauth_sing_in_btn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/sign_btn_height"
+        android:text="@string/sign_in"
+        style="@style/SignInBtn"
+        android:textAppearance="@style/MediumText"
+        android:fontFamily="@font/google_sans_regular"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintTop_toBottomOf="@id/oauth_facebook_sing_in_btn"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

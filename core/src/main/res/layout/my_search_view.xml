@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/my_search_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:background="@drawable/search_background"
+            android:paddingHorizontal="15dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textColorHint="@color/search_hint_color"
+            android:hint="@string/search_arts" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/my_search_filter_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:background="?attr/selectableItemBackground"
+            android:tint="@color/search_hint_color"
+            android:src="@drawable/filter_ico"
+            android:layout_marginEnd="10dp"/>
+</FrameLayout>
+</merge>
