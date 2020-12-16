@@ -46,7 +46,7 @@ class ArtworksAdapter(
                         .into(img)
                 }
                 view.setOnClickListener {
-                    listener.artworkItemClick(it, itemArt!!.id)
+                    listener.artworkItemClick(it, itemArt!!)
                 }
             }
         }
@@ -71,7 +71,7 @@ class ArtworksAdapter(
                 }
 
                 view.setOnClickListener {
-                    listener.artworkItemClick(it, itemArt!!.id)
+                    listener.artworkItemClick(it, itemArt!!)
                 }
             }
         }
@@ -95,6 +95,6 @@ class ArtworksAdapter(
     }
 
     interface ClickListener{
-        fun artworkItemClick(view: View, id:String)
+        fun artworkItemClick(view: View, item:ArtworkModel)
     }
 }

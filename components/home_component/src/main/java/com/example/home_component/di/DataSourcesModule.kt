@@ -4,6 +4,8 @@ import androidx.paging.ExperimentalPagingApi
 import com.example.core.scheduler.SchedulerProvider
 import com.example.framework_datasourcess.local.dao.ArtistDao
 import com.example.framework_datasourcess.local.dao.ArtworkDao
+import com.example.framework_datasourcess.local.dao.HomeArtistDao
+import com.example.framework_datasourcess.local.dao.HomeArtworkDao
 import com.example.framework_datasourcess.local.db.ArtsyDataBase
 import com.example.framework_datasourcess.model.artist.Artist
 import com.example.framework_datasourcess.model.artist.ArtistResponse
@@ -25,13 +27,13 @@ import dagger.Provides
 object DataSourcesModule {
 
     @Provides
-    fun provideLocalArtistDataSource(dao: ArtistDao): LocalDataSource<Artist> {
-        return LocalArtistDataSource(dao)
+    fun provideLocalArtistDataSource(dao: ArtistDao, homeArtistDao: HomeArtistDao, db:ArtsyDataBase): LocalDataSource<Artist> {
+        return LocalArtistDataSource(dao, homeArtistDao, db)
     }
 
     @Provides
-    fun provideLocalArtworkDataSource(artworkDao: ArtworkDao):LocalDataSource<Artwork>{
-        return LocalArtworkDataSource(artworkDao)
+    fun provideLocalArtworkDataSource(artworkDao: ArtworkDao, homeArtworkDao: HomeArtworkDao, db:ArtsyDataBase):LocalDataSource<Artwork>{
+        return LocalArtworkDataSource(artworkDao, homeArtworkDao, db)
     }
 
     @Provides

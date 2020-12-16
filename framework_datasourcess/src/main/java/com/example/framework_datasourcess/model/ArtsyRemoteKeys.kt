@@ -19,5 +19,6 @@ data class ArtsyRemoteKeys(
     companion object{
         const val ARTIST_TYPE = 1
         const val ARTWORK_TYPE = 2
+        const val ARTWORK_DETAILS_TYPE = 3
     }
 }

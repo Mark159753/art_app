@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.transition.Fade
+import com.example.core.model.ArtworkModel
 import com.example.core.navagation.SearchNav
 import com.example.core.until.MarginItemDecorator
 import com.example.future_home.adapters.ArtistAdapter
@@ -117,8 +118,8 @@ class HomeFragment : Fragment(), ArtworksAdapter.ClickListener {
         }
     }
 
-    override fun artworkItemClick(view: View, id: String) {
-        appNavigator.navFromHomeFragmentToArtworkDetails(view, id)
+    override fun artworkItemClick(view: View, item: ArtworkModel) {
+        appNavigator.navFromHomeFragmentToArtworkDetails(view, item)
     }
 
     private fun injectMe(){

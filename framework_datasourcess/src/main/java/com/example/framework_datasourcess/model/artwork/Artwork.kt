@@ -35,6 +35,7 @@ data class Artwork(
     val exhibitionHistory: String?,
     @SerializedName("iconicity")
     val iconicity: Double?,
+    @PrimaryKey
     @SerializedName("id")
     val id: String,
     @SerializedName("image_rights")
@@ -69,6 +70,6 @@ data class Artwork(
     @SerializedName("website")
     val website: String?
 ){
-    @PrimaryKey(autoGenerate = true)
-    var primaryKey:Long? = null
+//    @PrimaryKey(autoGenerate = true)
+//    var primaryKey:Long? = null
 }

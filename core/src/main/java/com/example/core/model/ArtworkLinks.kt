@@ -1,5 +1,9 @@
 package com.example.core.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class ArtworkLinks(
     val artists: String?,
     val collectionUsers: String?,
@@ -11,4 +15,4 @@ data class ArtworkLinks(
     val self: String?,
     val similarArtworks: String?,
     val thumbnail: String?
-)
+):Parcelable

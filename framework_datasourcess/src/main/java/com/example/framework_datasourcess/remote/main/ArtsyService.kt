@@ -27,8 +27,8 @@ interface ArtsyService {
 
     @GET("api/artists")
     fun getArtists(
-        @Query("size") size:Int,
-        @Query("offset") offset:Int,
+        @Query("size") size:Int? = null,
+        @Query("offset") offset:Int? = null,
         @Query("artwork_id") artwork_id:String? = null,
         @Query("similar_to_artist_id") similar_to_artist_id:String? = null,
         @Query("similarity_type") similarity_type:String? = null,

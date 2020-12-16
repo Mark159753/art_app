@@ -2,6 +2,7 @@ package com.example.core.navagation
 
 import android.os.Bundle
 import android.view.View
+import com.example.core.model.ArtworkModel
 
 interface SearchNav {
 
@@ -13,5 +14,5 @@ interface SearchNav {
 
     fun navFromSearchFilterToSearchFragment(view: View, queryBundle:Bundle)
 
-    fun navFromHomeFragmentToArtworkDetails(view: View, id:String)
+    fun navFromHomeFragmentToArtworkDetails(view: View, item: ArtworkModel)
 }

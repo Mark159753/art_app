@@ -24,4 +24,7 @@ interface ArtworkDao {
 
     @Query("DELETE FROM artwork")
     fun deleteAllArtworks()
+
+    @Query("DELETE FROM artwork WHERE id = :id")
+    fun deleteById(id:String)
 }

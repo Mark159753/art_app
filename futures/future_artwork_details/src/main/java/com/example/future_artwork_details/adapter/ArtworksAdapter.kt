@@ -1,46 +1,40 @@
 package com.example.future_artwork_details.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.model.ArtworkModel
 import com.example.future_artwork_details.R
+import com.squareup.picasso.Picasso
 
-class ArtworksAdapter:RecyclerView.Adapter<ArtworksAdapter.ArtworkItemViewHolder>() {
+class ArtworksAdapter: PagingDataAdapter<ArtworkModel, ArtworksAdapter.ArtworkItemViewHolder>(COMPARATOR) {
 
-    private val testData = arrayOf(
-        TestItem(Color.RED),
-        TestItem(Color.YELLOW),
-        TestItem(Color.BLUE),
-        TestItem(Color.GREEN),
-        TestItem(Color.CYAN),
-        TestItem(Color.MAGENTA),
-        TestItem(Color.WHITE),
-        TestItem(Color.DKGRAY),
-        TestItem(Color.LTGRAY),
-        TestItem(Color.BLACK)
-    )
+    override fun onBindViewHolder(holder: ArtworkItemViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtworkItemViewHolder {
         return ArtworkItemViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: ArtworkItemViewHolder, position: Int) {
-        holder.bind(testData[position])
-    }
-
-    override fun getItemCount(): Int {
-        return testData.size
-    }
+    fun getItemFromPosition(position: Int):ArtworkModel? = getItem(position)
 
     class ArtworkItemViewHolder(view:View):RecyclerView.ViewHolder(view){
 
         private val img:ImageView = view.findViewById(R.id.artwork_item_img)
 
-        fun bind(item:TestItem){
-            img.setBackgroundColor(item.color)
+        fun bind(item:ArtworkModel?){
+            item?.let { artwork ->
+                artwork.links.thumbnail?.let { thumbnail ->
+                    Picasso.get()
+                            .load(thumbnail)
+                            .into(img)
+                }
+            }
         }
 
         companion object{
@@ -51,5 +45,13 @@ class ArtworksAdapter:RecyclerView.Adapter<ArtworksAdapter.ArtworkItemViewHolder
         }
     }
 
-    data class TestItem(val color:Int)
+    companion object COMPARATOR: DiffUtil.ItemCallback<ArtworkModel>(){
+        override fun areItemsTheSame(oldItem: ArtworkModel, newItem: ArtworkModel): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: ArtworkModel, newItem: ArtworkModel): Boolean {
+            return oldItem == newItem
+        }
+    }
 }

@@ -3,6 +3,8 @@ package com.example.artapp
 import android.app.Application
 import com.example.artapp.di.ApplicationComponent
 import com.example.artapp.di.DaggerApplicationComponent
+import com.example.future_artwork_details.di.ArtworkDetailsInjector
+import com.example.future_artwork_details.di.DetailsArtworkComponent
 import com.example.future_authorization.di.AuthFragmentComponent
 import com.example.future_authorization.di.AuthInjector
 import com.example.future_home.di.HomeFragmentComponent
@@ -13,7 +15,7 @@ import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 
 
-class ArtApp:Application(), AuthInjector, HomeInjector, SearchInjector{
+class ArtApp:Application(), AuthInjector, HomeInjector, SearchInjector, ArtworkDetailsInjector {
 
     lateinit var appComponent:ApplicationComponent
 
@@ -35,5 +37,9 @@ class ArtApp:Application(), AuthInjector, HomeInjector, SearchInjector{
 
     override fun getSearchComponentFactory(): SearchFragmentComponent.Factory {
         return appComponent.getSearchFragmentComponentFactory()
+    }
+
+    override fun getDetailsArtworkComponentFactory(): DetailsArtworkComponent.Factory {
+        return appComponent.getDetailsArtworkComponentFactory()
     }
 }

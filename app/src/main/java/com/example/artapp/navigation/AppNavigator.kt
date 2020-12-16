@@ -8,6 +8,8 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.example.artapp.MainActivity
 import com.example.artapp.R
+import com.example.core.HOME_FRAGMENT_ARTWORK_MODEL
+import com.example.core.model.ArtworkModel
 import com.example.core.navagation.AuthorizationToMainActivityNav
 import com.example.core.navagation.SearchNav
 import com.example.future_search.search.SearchFragmentDirections
@@ -37,7 +39,8 @@ class AppNavigator @Inject constructor():AuthorizationToMainActivityNav, SearchN
         view.findNavController().navigate(R.id.action_searchFilterDialog_to_searchFragment, queryBundle)
     }
 
-    override fun navFromHomeFragmentToArtworkDetails(view: View, id: String) {
-        view.findNavController().navigate(R.id.artworkDetailsFragment)
+    override fun navFromHomeFragmentToArtworkDetails(view: View, item: ArtworkModel) {
+        val b = bundleOf(HOME_FRAGMENT_ARTWORK_MODEL to item)
+        view.findNavController().navigate(R.id.artworkDetailsFragment, b)
     }
 }

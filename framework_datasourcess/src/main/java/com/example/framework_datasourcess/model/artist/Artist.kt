@@ -22,6 +22,7 @@ data class Artist @Inject constructor (
     @SerializedName("hometown")
     val hometown: String?,
     @SerializedName("id")
+    @PrimaryKey
     val id: String,
     @SerializedName("image_versions")
     val imageVersions: List<String>?,
@@ -41,6 +42,6 @@ data class Artist @Inject constructor (
     @SerializedName("updated_at")
     val updatedAt: String?
 ){
-    @PrimaryKey(autoGenerate = true)
-    var primaryKey:Long? = null
+//    @PrimaryKey(autoGenerate = true)
+//    var primaryKey:Long? = null
 }

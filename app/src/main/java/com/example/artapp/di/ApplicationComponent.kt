@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.artapp.SplashActivity
 import com.example.framework_datasourcess.di.DatabaseModule
 import com.example.framework_datasourcess.di.NetworkModule
+import com.example.future_artwork_details.di.DetailsArtworkComponent
 import com.example.future_authorization.di.AuthFragmentComponent
 import com.example.future_home.di.HomeFragmentComponent
 import com.example.future_search.di.SearchFragmentComponent
@@ -28,6 +29,8 @@ interface ApplicationComponent {
     fun getHomeFragmentComponentFactory(): HomeFragmentComponent.Factory
 
     fun getSearchFragmentComponentFactory():SearchFragmentComponent.Factory
+
+    fun getDetailsArtworkComponentFactory(): DetailsArtworkComponent.Factory
 
     fun inject(activity:SplashActivity)
 
