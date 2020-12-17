@@ -1,6 +1,7 @@
 package com.example.artwork_details_component.data.datasource.remote
 
 import com.example.artwork_details_component.data.datasource.abstraction.DetailsRemoteDataSource
+import com.example.framework_datasourcess.model.artist.Artist
 import com.example.framework_datasourcess.model.artist.ArtistResponse
 import com.example.framework_datasourcess.model.artwork.ArtworkRes
 import com.example.framework_datasourcess.remote.main.ArtsyService
@@ -15,7 +16,11 @@ class DetailsRemoteArtistDataSource @Inject constructor(
         return api.getArtworks(artist_id = id, size = size, offset = offset)
     }
 
-    override fun getArtist(artworkId: String):Single<ArtistResponse> {
+    override fun getArtistByArtworkId(artworkId: String):Single<ArtistResponse> {
         return api.getArtists(artwork_id = artworkId)
+    }
+
+    override fun getArtistById(artistId: String): Single<Artist> {
+        return api.getArtistById(artistId)
     }
 }

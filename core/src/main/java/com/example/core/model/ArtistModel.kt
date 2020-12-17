@@ -1,5 +1,9 @@
 package com.example.core.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class ArtistModel(
     val biography: String?,
     val birthday: String?,
@@ -16,4 +20,4 @@ data class ArtistModel(
     val slug: String?,
     val sortableName: String?,
     val updatedAt: String?
-)
+):Parcelable

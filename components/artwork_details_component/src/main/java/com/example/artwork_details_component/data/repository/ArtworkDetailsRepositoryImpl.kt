@@ -50,7 +50,7 @@ class ArtworkDetailsRepositoryImpl @Inject constructor(
 
     override fun getArtistByArtworkId(id:String):Single<ArtistModel>{
         val mapper = ArtistMapper()
-        return remote.getArtist(id)
+        return remote.getArtistByArtworkId(id)
                 .subscribeOn(schedulers.io())
                 .map { it.embedded.artists[0] }
                 .flatMap { local.insertArtistAndGetArtist(it) }
@@ -67,6 +67,14 @@ class ArtworkDetailsRepositoryImpl @Inject constructor(
                         }
                     }
         })
+    }
+
+    override fun getArtistById(id: String): Single<ArtistModel> {
+        val mapper = ArtistMapper()
+        return remote.getArtistById(id)
+                .subscribeOn(schedulers.io())
+                .flatMap { local.insertArtistAndGetArtist(it) }
+                .map { mapper.map(it) }
     }
 
     companion object{

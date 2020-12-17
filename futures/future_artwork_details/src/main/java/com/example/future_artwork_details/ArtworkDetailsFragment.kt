@@ -15,6 +15,8 @@ import androidx.room.EmptyResultSetException
 import androidx.viewpager2.widget.ViewPager2
 import com.example.core.ARTIST_FRAGMENT_ARTIST_MODEL
 import com.example.core.HOME_FRAGMENT_ARTWORK_MODEL
+import com.example.core.SEARCH_FRAGMENT_ARTIST_ID
+import com.example.core.SEARCH_FRAGMENT_ARTWORK_ID
 import com.example.core.exception.NoConnectivityException
 import com.example.core.exception.UnknownArtistException
 import com.example.core.model.ArtistModel
@@ -85,12 +87,25 @@ class ArtworkDetailsFragment : Fragment() {
     private fun loadData(){
         val artwork:ArtworkModel? = arguments?.getParcelable(HOME_FRAGMENT_ARTWORK_MODEL)
         val artist:ArtistModel? = arguments?.getParcelable(ARTIST_FRAGMENT_ARTIST_MODEL)
+        val artistId:String? = arguments?.getString(SEARCH_FRAGMENT_ARTIST_ID)
+        val artworkId:String? = arguments?.getString(SEARCH_FRAGMENT_ARTWORK_ID)
+
         viewModel.setUiState(UiState.Loading)
         val disposable = Flowable.defer {
-            if (artwork != null)
-                viewModel.getArtworkPagingByArtwork(artwork.id)
-            else
-                viewModel.getArtworkPagingByArtist(artist!!)
+            when {
+                artwork != null -> {
+                    viewModel.getArtworkPagingByArtwork(artwork.id)
+                }
+                artworkId != null -> {
+                    viewModel.getArtworkPagingByArtwork(artworkId)
+                }
+                artist != null -> {
+                    viewModel.getArtworkPagingByArtist(artist)
+                }
+                else -> {
+                    viewModel.getArtworkPagingByArtistId(artistId!!)
+                }
+            }
         }
                 .subscribe(
                 {data ->

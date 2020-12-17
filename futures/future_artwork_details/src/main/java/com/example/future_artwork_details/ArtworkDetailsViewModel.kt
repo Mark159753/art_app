@@ -1,6 +1,5 @@
 package com.example.future_artwork_details
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,17 +8,17 @@ import androidx.paging.PagingData
 import androidx.paging.rxjava2.cachedIn
 import com.example.artwork_details_component.domain.interactor.ArtworkByArtistUseCase
 import com.example.artwork_details_component.domain.interactor.ArtistByArtworkIdUseCase
-import com.example.core.exception.UnknownArtistException
+import com.example.artwork_details_component.domain.interactor.ArtistByIdUseCase
 import com.example.core.model.ArtistModel
 import com.example.core.model.ArtworkModel
 import com.example.future_artwork_details.state.UiState
 import io.reactivex.Flowable
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class ArtworkDetailsViewModel @Inject constructor(
         private val artworkByArtistUseCase: ArtworkByArtistUseCase,
-        private val artistByArtworkIdUseCase: ArtistByArtworkIdUseCase
+        private val artistByArtworkIdUseCase: ArtistByArtworkIdUseCase,
+        private val artistByIdUseCase: ArtistByIdUseCase
 ): ViewModel() {
 
     private val _artistLiveData = MutableLiveData<ArtistModel>()
@@ -38,11 +37,11 @@ class ArtworkDetailsViewModel @Inject constructor(
 
     fun getArtworkPagingByArtwork(artworkId:String):Flowable<PagingData<ArtworkModel>>{
         return if (_artistLiveData.value == null){
-                    artistByArtworkIdUseCase.getArtworkByArtworkId(artworkId)
+                    artistByArtworkIdUseCase.getArtistByArtworkId(artworkId)
                             .toFlowable()
                             .flatMap { getArtworkPagingByArtist(it) }
         }else{
-            getArtworkPagingByArtist(artistLiveData.value!!)
+            getArtworkPagingByArtist(_artistLiveData.value!!)
         }
     }
 
@@ -53,6 +52,18 @@ class ArtworkDetailsViewModel @Inject constructor(
                     .cachedIn(viewModelScope)
         }
         return currentArtworkPagingRes!!
+    }
+
+    fun getArtworkPagingByArtistId(artistId:String): Flowable<PagingData<ArtworkModel>>? {
+        return if (_artistLiveData.value == null){
+            artistByIdUseCase.getArtistById(artistId)
+                    .toFlowable()
+                    .flatMap {
+                        getArtworkPagingByArtist(it)
+                    }
+        }else{
+            getArtworkPagingByArtist(_artistLiveData.value!!)
+        }
     }
 
     fun setUiState(state: UiState){

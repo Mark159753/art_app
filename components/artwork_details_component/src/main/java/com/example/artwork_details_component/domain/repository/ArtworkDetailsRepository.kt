@@ -11,4 +11,6 @@ interface ArtworkDetailsRepository {
     fun getArtworksPagingByArtistId(artistId:String): Flowable<PagingData<ArtworkModel>>
 
     fun getArtistByArtworkId(id:String): Single<ArtistModel>
+
+    fun getArtistById(id:String):Single<ArtistModel>
 }

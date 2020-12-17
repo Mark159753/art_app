@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.transition.Fade
+import com.example.core.model.ArtistModel
 import com.example.core.model.ArtworkModel
 import com.example.core.navagation.SearchNav
 import com.example.core.until.MarginItemDecorator
@@ -23,7 +24,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 
-class HomeFragment : Fragment(), ArtworksAdapter.ClickListener {
+class HomeFragment : Fragment(), ArtworksAdapter.ClickListener, ArtistAdapter.ClickListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -32,7 +33,7 @@ class HomeFragment : Fragment(), ArtworksAdapter.ClickListener {
     private val viewModel: HomeViewModel by viewModels{ viewModelFactory }
     private var binder:HomeFragmentBinding? = null
     private val artworksAdapter:ArtworksAdapter = ArtworksAdapter(this)
-    private val artistAdapter:ArtistAdapter = ArtistAdapter()
+    private val artistAdapter:ArtistAdapter = ArtistAdapter(this)
     private val mDisposable = CompositeDisposable()
 
     override fun onCreateView(
@@ -120,6 +121,10 @@ class HomeFragment : Fragment(), ArtworksAdapter.ClickListener {
 
     override fun artworkItemClick(view: View, item: ArtworkModel) {
         appNavigator.navFromHomeFragmentToArtworkDetails(view, item)
+    }
+
+    override fun artistItemClick(view: View, item: ArtistModel) {
+        appNavigator.navFromHomeFragmentToArtistDetails(view, item)
     }
 
     private fun injectMe(){

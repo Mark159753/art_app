@@ -1,12 +1,14 @@
 package com.example.framework_datasourcess.remote.main
 
 import com.example.framework_datasourcess.model.DeleteAccessToken
+import com.example.framework_datasourcess.model.artist.Artist
 import com.example.framework_datasourcess.model.artist.ArtistResponse
 import com.example.framework_datasourcess.model.artwork.ArtworkRes
 import com.example.framework_datasourcess.model.search.SearchResponse
 import io.reactivex.Single
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ArtsyService {
@@ -37,6 +39,11 @@ interface ArtsyService {
         @Query("published_artworks") published_artworks:Boolean? = null,
         @Query("partner_id") partner_id:String? = null
     ):Single<ArtistResponse>
+
+    @GET("api/artists/{id}")
+    fun getArtistById(
+            @Path("id") id:String
+    ):Single<Artist>
 
     @GET("api/search")
     fun searchQuery(

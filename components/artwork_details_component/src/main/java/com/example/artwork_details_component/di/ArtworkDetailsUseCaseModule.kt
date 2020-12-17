@@ -2,6 +2,7 @@ package com.example.artwork_details_component.di
 
 import com.example.artwork_details_component.domain.interactor.ArtworkByArtistUseCase
 import com.example.artwork_details_component.domain.interactor.ArtistByArtworkIdUseCase
+import com.example.artwork_details_component.domain.interactor.ArtistByIdUseCase
 import com.example.artwork_details_component.domain.repository.ArtworkDetailsRepository
 import com.example.core.di.DetailsArtworkScope
 import dagger.Module
@@ -24,5 +25,13 @@ object ArtworkDetailsUseCaseModule {
             repository: ArtworkDetailsRepository
     ): ArtistByArtworkIdUseCase {
         return ArtistByArtworkIdUseCase(repository)
+    }
+
+    @Provides
+    @DetailsArtworkScope
+    fun provideArtworkByIdUseCase(
+            repository: ArtworkDetailsRepository
+    ):ArtistByIdUseCase{
+        return ArtistByIdUseCase(repository)
     }
 }

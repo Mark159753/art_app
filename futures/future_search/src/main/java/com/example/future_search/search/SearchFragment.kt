@@ -2,14 +2,11 @@ package com.example.future_search.search
 
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
@@ -25,7 +22,7 @@ import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), SearchRcAdapter.ClickListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -35,7 +32,7 @@ class SearchFragment : Fragment() {
     @Inject
     lateinit var appNavigator:SearchNav
 
-    private val mSearchAdapter:SearchRcAdapter by lazy { SearchRcAdapter() }
+    private val mSearchAdapter:SearchRcAdapter by lazy { SearchRcAdapter(this) }
 
     private val mDisposable = CompositeDisposable()
     private var pagingSearchDisposable:Disposable? = null
@@ -112,6 +109,16 @@ class SearchFragment : Fragment() {
             }
             return@addEditorActionListener false
         }
+    }
+
+    override fun artistItemClick(view: View, artistId: String) {
+        Log.e("ARTIST_CLICK", artistId)
+        appNavigator.navFromSearchFragmentToArtworkDetails(view, artistId, null)
+    }
+
+    override fun artworkItemClick(view: View, artworkId: String) {
+        Log.e("ARTWORK_CLICK", artworkId)
+        appNavigator.navFromSearchFragmentToArtworkDetails(view, null, artworkId)
     }
 
     private fun injectMe(){

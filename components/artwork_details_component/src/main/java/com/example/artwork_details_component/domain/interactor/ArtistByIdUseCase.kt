@@ -5,10 +5,11 @@ import com.example.core.model.ArtistModel
 import io.reactivex.Single
 import javax.inject.Inject
 
-class ArtistByArtworkIdUseCase @Inject constructor(
+class ArtistByIdUseCase @Inject constructor(
         private val repository: ArtworkDetailsRepository
-){
-    fun getArtistByArtworkId(artworkId: String): Single<ArtistModel>{
-        return repository.getArtistByArtworkId(artworkId)
+) {
+
+    fun getArtistById(id:String): Single<ArtistModel> {
+        return repository.getArtistById(id)
     }
 }
