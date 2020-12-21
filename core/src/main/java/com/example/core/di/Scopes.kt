@@ -21,3 +21,8 @@ annotation class SearchFragmentScope
 @MustBeDocumented
 @Retention(value = AnnotationRetention.RUNTIME)
 annotation class DetailsArtworkScope
+
+@Scope
+@MustBeDocumented
+@Retention(value = AnnotationRetention.RUNTIME)
+annotation class ProfileFragmentScope

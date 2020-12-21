@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/components/artwork_details_component" />
             <option value="$PROJECT_DIR$/components/component_authorization" />
             <option value="$PROJECT_DIR$/components/home_component" />
+            <option value="$PROJECT_DIR$/components/profile_component" />
             <option value="$PROJECT_DIR$/components/search_component" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/framework_datasourcess" />

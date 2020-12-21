@@ -92,5 +92,5 @@ dependencies {
     implementation project(":components:search_component")
     implementation project(":futures:future_artwork_details")
     implementation project(":components:artwork_details_component")
-
+    implementation project(":components:profile_component")
 }

@@ -80,4 +80,5 @@ dependencies {
 
     implementation project(":core")
     implementation project(":framework_datasourcess")
+    implementation project(":components:profile_component")
 }

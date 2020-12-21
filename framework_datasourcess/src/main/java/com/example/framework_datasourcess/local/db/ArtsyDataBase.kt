@@ -12,6 +12,7 @@ import com.example.framework_datasourcess.model.artist.Artist
 import com.example.framework_datasourcess.model.artwork.Artwork
 import com.example.framework_datasourcess.model.entities.ArtworkByArtist
 import com.example.framework_datasourcess.model.entities.HomeArtist
+import com.example.framework_datasourcess.model.user.UserDetails
 
 @Database(
     entities = [
@@ -21,9 +22,10 @@ import com.example.framework_datasourcess.model.entities.HomeArtist
         ArtsyRemoteKeys::class,
         HomeArtwork::class,
         HomeArtist::class,
-        ArtworkByArtist::class
+        ArtworkByArtist::class,
+        UserDetails::class
     ],
-    version = 5, exportSchema = false)
+    version = 6, exportSchema = false)
 @TypeConverters(ListStringConverter::class)
 abstract class ArtsyDataBase:RoomDatabase() {
 
@@ -40,4 +42,6 @@ abstract class ArtsyDataBase:RoomDatabase() {
     abstract fun getHomeArtistDao():HomeArtistDao
 
     abstract fun getArtworkByArtistDao():ArtworkByArtistDao
+
+    abstract fun getUserDetailsDao():UserDetailsDao
 }

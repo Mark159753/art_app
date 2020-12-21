@@ -7,6 +7,7 @@ import com.example.framework_datasourcess.di.NetworkModule
 import com.example.future_artwork_details.di.DetailsArtworkComponent
 import com.example.future_authorization.di.AuthFragmentComponent
 import com.example.future_home.di.HomeFragmentComponent
+import com.example.future_profile.di.ProfileFragmentComponent
 import com.example.future_search.di.SearchFragmentComponent
 import dagger.BindsInstance
 import dagger.Component
@@ -31,6 +32,8 @@ interface ApplicationComponent {
     fun getSearchFragmentComponentFactory():SearchFragmentComponent.Factory
 
     fun getDetailsArtworkComponentFactory(): DetailsArtworkComponent.Factory
+
+    fun getProfileFragmentComponentFactory():ProfileFragmentComponent.Factory
 
     fun inject(activity:SplashActivity)
 

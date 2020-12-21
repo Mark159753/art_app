@@ -1,3 +1,4 @@
+include ':components:profile_component'
 include ':components:artwork_details_component'
 include ':futures:future_artwork_details'
 include ':components:search_component'

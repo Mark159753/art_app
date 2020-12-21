@@ -15,12 +15,14 @@ import com.example.core.SEARCH_FRAGMENT_ARTWORK_ID
 import com.example.core.model.ArtistModel
 import com.example.core.model.ArtworkModel
 import com.example.core.navagation.AuthorizationToMainActivityNav
+import com.example.core.navagation.ProfileNav
 import com.example.core.navagation.SearchNav
+import com.example.future_authorization.AuthorizationActivity
 import com.example.future_search.search.SearchFragmentDirections
 import com.example.future_search.searchFilter.SearchFilterDirections
 import javax.inject.Inject
 
-class AppNavigator @Inject constructor():AuthorizationToMainActivityNav, SearchNav {
+class AppNavigator @Inject constructor():AuthorizationToMainActivityNav, SearchNav, ProfileNav {
 
     override fun navigateToMainActivity(context: Context) {
         val intent = Intent(context, MainActivity::class.java)
@@ -56,5 +58,10 @@ class AppNavigator @Inject constructor():AuthorizationToMainActivityNav, SearchN
     override fun navFromSearchFragmentToArtworkDetails(view: View, artistId: String?, artworkId: String?) {
         val b = bundleOf(SEARCH_FRAGMENT_ARTWORK_ID to artworkId, SEARCH_FRAGMENT_ARTIST_ID to artistId)
         view.findNavController().navigate(R.id.artworkDetailsFragment, b)
+    }
+
+    override fun navFromProfileFragmentToAuthFragment(view: View) {
+        val intent = Intent(view.context, AuthorizationActivity::class.java)
+        view.context.startActivity(intent)
     }
 }

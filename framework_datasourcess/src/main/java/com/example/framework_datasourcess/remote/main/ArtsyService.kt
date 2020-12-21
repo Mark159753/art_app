@@ -5,6 +5,8 @@ import com.example.framework_datasourcess.model.artist.Artist
 import com.example.framework_datasourcess.model.artist.ArtistResponse
 import com.example.framework_datasourcess.model.artwork.ArtworkRes
 import com.example.framework_datasourcess.model.search.SearchResponse
+import com.example.framework_datasourcess.model.user.CurrentUser
+import com.example.framework_datasourcess.model.user.UserDetails
 import io.reactivex.Single
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -53,5 +55,11 @@ interface ArtsyService {
         @Query("type") type:String? = null
     ):Single<SearchResponse>
 
+    @GET("api/current_user")
+    fun getCurrentUser():Single<CurrentUser>
 
+    @GET("api/user_details/{id}")
+    fun getUserDetails(
+            @Path("id") id:String
+    ):Single<UserDetails>
 }

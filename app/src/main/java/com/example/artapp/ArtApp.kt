@@ -9,13 +9,15 @@ import com.example.future_authorization.di.AuthFragmentComponent
 import com.example.future_authorization.di.AuthInjector
 import com.example.future_home.di.HomeFragmentComponent
 import com.example.future_home.di.HomeInjector
+import com.example.future_profile.di.ProfileFragmentComponent
+import com.example.future_profile.di.ProfileInjector
 import com.example.future_search.di.SearchFragmentComponent
 import com.example.future_search.di.SearchInjector
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 
 
-class ArtApp:Application(), AuthInjector, HomeInjector, SearchInjector, ArtworkDetailsInjector {
+class ArtApp:Application(), AuthInjector, HomeInjector, SearchInjector, ArtworkDetailsInjector, ProfileInjector {
 
     lateinit var appComponent:ApplicationComponent
 
@@ -41,5 +43,9 @@ class ArtApp:Application(), AuthInjector, HomeInjector, SearchInjector, ArtworkD
 
     override fun getDetailsArtworkComponentFactory(): DetailsArtworkComponent.Factory {
         return appComponent.getDetailsArtworkComponentFactory()
+    }
+
+    override fun getProfileComponentFactory(): ProfileFragmentComponent.Factory {
+        return appComponent.getProfileFragmentComponentFactory()
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.room.EmptyResultSetException
 import com.example.core.scheduler.SchedulerProvider
 import com.example.framework_datasourcess.local.dao.AccessTokenDao
 import com.example.framework_datasourcess.model.AccessToken
@@ -31,29 +32,29 @@ class SplashActivity : AppCompatActivity() {
         val autIntent = Intent(this, AuthorizationActivity::class.java)
         val homeIntent = Intent(this, MainActivity::class.java)
 
-//        tokenDisposable = accessTokenDao.getAccessToken()
-//            .subscribeOn(scheduler.io())
-//            .observeOn(scheduler.ui())
-//            .subscribe(
-//                {data ->
-//                    if (data != null)
-//                        startNewActivity(homeIntent)
-//                    else startNewActivity(autIntent)
-//                },
-//                {e ->
-//                    Log.e(TAG, "ERROR -> ${e.message}")
-//                    if (e is EmptyResultSetException)
-//                        startNewActivity(autIntent)
-//                })
-        tokenDisposable = accessTokenDao.insertAccessToken(AccessToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzAxMGJiM2VjMDY2ZDQ3Yzc2NWFmZmEiLCJzYWx0X2hhc2giOiJlOGQ3ZGY1ZDM0MzhlYmE3MTA3OTZhZDA5ZmZmZDczNSIsInJvbGVzIjoidXNlciIsInBhcnRuZXJfaWRzIjpbXSwib3RwIjpmYWxzZSwiZXhwIjoyMzkzNTgyNDIxLCJpYXQiOjE2MDQ2NjQwMjEsImF1ZCI6IjVjMDEwYzU4ZWMwNjZkNDdjNzY1YjA3ZSIsImlzcyI6IkdyYXZpdHkiLCJqdGkiOiI1ZmE1M2FkNWQxN2MwMDAwMTJmNmM4YzEifQ.kH__MqgbSKPGrZwL5UuR8vbyfFidGOPKUiB6TUJpO0Q", ""))
+        tokenDisposable = accessTokenDao.getAccessToken()
             .subscribeOn(scheduler.io())
             .observeOn(scheduler.ui())
             .subscribe(
-                { startNewActivity(homeIntent)},
+                {data ->
+                    if (data != null)
+                        startNewActivity(homeIntent)
+                    else startNewActivity(autIntent)
+                },
                 {e ->
-                    Log.e(TAG, e.message.toString())
-                }
-            )
+                    Log.e(TAG, "ERROR -> ${e.message}")
+                    if (e is EmptyResultSetException)
+                        startNewActivity(autIntent)
+                })
+//        tokenDisposable = accessTokenDao.insertAccessToken(AccessToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzAxMGJiM2VjMDY2ZDQ3Yzc2NWFmZmEiLCJzYWx0X2hhc2giOiJlOGQ3ZGY1ZDM0MzhlYmE3MTA3OTZhZDA5ZmZmZDczNSIsInJvbGVzIjoidXNlciIsInBhcnRuZXJfaWRzIjpbXSwib3RwIjpmYWxzZSwiZXhwIjoyMzkzNTgyNDIxLCJpYXQiOjE2MDQ2NjQwMjEsImF1ZCI6IjVjMDEwYzU4ZWMwNjZkNDdjNzY1YjA3ZSIsImlzcyI6IkdyYXZpdHkiLCJqdGkiOiI1ZmE1M2FkNWQxN2MwMDAwMTJmNmM4YzEifQ.kH__MqgbSKPGrZwL5UuR8vbyfFidGOPKUiB6TUJpO0Q", ""))
+//            .subscribeOn(scheduler.io())
+//            .observeOn(scheduler.ui())
+//            .subscribe(
+//                { startNewActivity(homeIntent)},
+//                {e ->
+//                    Log.e(TAG, e.message.toString())
+//                }
+//            )
     }
 
     private fun injectMe(){

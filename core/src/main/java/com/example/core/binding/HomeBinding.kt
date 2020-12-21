@@ -4,11 +4,12 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.core.R
-import com.example.core.model.ArtworkDimensions
 import com.example.core.model.ArtworkModel
+import com.example.core.until.generateCircleBitmap
 
 @BindingAdapter("changeFirstLettersColor")
 fun changeLettersColor(view: TextView, text:String){
@@ -89,4 +90,11 @@ fun showDimensionTitle(view: TextView, artworkModel: ArtworkModel?){
         view.visibility = View.VISIBLE
     }else
         view.visibility = View.GONE
+}
+
+@BindingAdapter("setRoundedTextImg")
+fun setRoundedTextImg(view:ImageView, text: String?){
+    val liter = text?.get(0)
+    val img = generateCircleBitmap(view.context, view.context.getColor(R.color.blue_2), 80f, liter?.toString())
+    img?.let { view.setImageBitmap(it) }
 }

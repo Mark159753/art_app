@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_out">Sign Out</string>
+    <string name="timezone"><b>Timezone:</b></string>
+    <string name="email_address"><b>Your email:</b></string>
+    <string name="created_at"><b>Created at:</b></string>
+    <string name="snackbar_error_msg">LOGOUT ERROR TRY AGAIN</string>
+</resources>

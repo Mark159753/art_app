@@ -49,4 +49,9 @@ object DatabaseModule {
     fun provideArtworkByArtistDao(db: ArtsyDataBase):ArtworkByArtistDao{
         return db.getArtworkByArtistDao()
     }
+
+    @Provides
+    fun provideUserDetailsDao(db: ArtsyDataBase):UserDetailsDao{
+        return db.getUserDetailsDao()
+    }
 }

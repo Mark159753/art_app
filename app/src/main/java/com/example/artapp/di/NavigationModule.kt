@@ -2,6 +2,7 @@ package com.example.artapp.di
 
 import com.example.artapp.navigation.AppNavigator
 import com.example.core.navagation.AuthorizationToMainActivityNav
+import com.example.core.navagation.ProfileNav
 import com.example.core.navagation.SearchNav
 import dagger.Module
 import dagger.Provides
@@ -23,6 +24,11 @@ object NavigationModule {
 
     @Provides
     fun provideSearchDialogNav(nav:AppNavigator):SearchNav{
+        return nav
+    }
+
+    @Provides
+    fun provideProfileNav(nav:AppNavigator):ProfileNav{
         return nav
     }
 

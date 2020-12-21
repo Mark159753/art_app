@@ -1,13 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
-
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="androidx.lifecycle.LiveData"/>
+        <import type="com.example.core.model.UserProfileModel"/>
+        <variable
+            name="userProfile"
+            type="LiveData&lt;UserProfileModel>" />
+    </data>
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello From Profile" />
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ProfileFragment">
 
-</FrameLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/profile_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="parent"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="35dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_backgroud"
+                    android:gravity="bottom">
+
+                    <TextView
+                        android:id="@+id/profile_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Marek Melnarovycz"
+                        android:text="@{userProfile.name}"
+                        android:textColor="@android:color/white"
+                        android:textAppearance="@style/BigText1"
+                        android:fontFamily="@font/google_sans_bold"
+                        android:layout_gravity="center_horizontal"/>
+                    <TextView
+                        android:id="@+id/profile_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="User"
+                        android:text="@{userProfile.type}"
+                        android:textAppearance="@style/MediumText"
+                        android:textColor="@android:color/white"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="25dp"/>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:setRoundedTextImg="@{userProfile.name}"
+                app:layout_constraintLeft_toLeftOf="@id/profile_card_view"
+                app:layout_constraintRight_toRightOf="@id/profile_card_view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/profile_card_view"
+                app:layout_constraintVertical_bias="0"
+                android:elevation="8dp"
+                android:layout_marginTop="10dp"
+                android:translationZ="8dp"
+                tools:background="@color/black"/>
+
+            <TextView
+                android:id="@+id/profile_created_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/profile_card_view"
+                app:layout_constraintLeft_toLeftOf="parent"
+                tools:text="Created at: 2018-11-30"
+                android:text="@{@string/created_at +` `+ userProfile.createdAt}"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/MediumText"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"/>
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/profile_created_at"
+                tools:text="Your email: marek867@ukr.net"
+                android:text="@{@string/email_address +` `+ userProfile.email}"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/MediumText"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+            <TextView
+                android:id="@+id/profile_timezone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/profile_email"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/MediumText"
+                tools:text="@string/timezone"
+                android:text="@{@string/timezone +` `+ userProfile.timezone}"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/profile_sign_out_btn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="@string/sign_out"
+                style="@style/LogOutBtn"
+                app:layout_constraintVertical_bias="1"
+                android:layout_marginBottom="@dimen/horizontal_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_timezone"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
