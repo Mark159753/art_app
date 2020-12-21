@@ -1,8 +1,8 @@
 # ArtApp
-<img src="screenshots/Screenshot_20201221-164359_ArtApp.jpg" width="225"></img>
-<img src="screenshots/Screenshot_20201221-164443_ArtApp.jpg" width="225"></img>
-<img src="screenshots/Screenshot_20201221-164505_ArtApp.jpg" width="225"></img>
-<img src="screenshots/Screenshot_20201221-164530_ArtApp.jpg" width="225"></img>
+<img src="screens/Screenshot_20201221-164359_ArtApp.jpg" width="225"></img>
+<img src="screens/Screenshot_20201221-164443_ArtApp.jpg" width="225"></img>
+<img src="screens/Screenshot_20201221-164505_ArtApp.jpg" width="225"></img>
+<img src="screens/Screenshot_20201221-164530_ArtApp.jpg" width="225"></img>
 
 ## Base project
 - **Clean Architecture**
