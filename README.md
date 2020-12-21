@@ -8,9 +8,9 @@
 - **Clean Architecture**
 - **Dependency injection with Dagger 2**
 - **Paging 3**
-- **RxJava2
-- **Room
-- **Retrofit
+- **RxJava2**
+- **Room**
+- **Retrofit**
 
 ## Quick start
 1. Create Artsy DEVELOPER ACCOUNT and get Your `CLIENT_ID` and `CLIENT_SECRET` in https://developers.artsy.net/
